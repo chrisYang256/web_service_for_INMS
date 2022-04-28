@@ -1,0 +1,51 @@
+/* panel-info */
+#device-info-set-wrapper {
+  margin: 30px 0px 30px 25px;
+}
+
+#device-info-wrapper {
+  margin: auto;
+}
+
+.device-info-wrapper > p {
+  margin: auto;
+  float: left;
+  background-color: #fff;
+  border-radius: 10px;
+  width: 80px;
+}
+
+#device-name-data,
+#device-ip-data,
+#device-desc-data {
+  background-color: lightgoldenrodyellow;
+  width: 95%;
+}
+
+#device-name-set-wrapper {
+  margin-top: 20px;
+}
+
+#device-ip-set-wrapper,
+#device-desc-set-wrapper {
+  margin-top: 30px;
+}
+
+/* pannel-buttons */
+#button-wrapper {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#list-button {
+  margin-left: 25px;
+}
+
+#update-button {
+  margin-left: 180px;
+}
+
+#delete-button {
+  margin-right: 25px;
+}

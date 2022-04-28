@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',
+    filename='css/common.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='/css/select_device_detail.css') }}"
+    />
+    <title>Device Detail</title>
+  </head>
+  <body>
+    <section id="left-side-bar-container">
+      <div id="left-side-bar-wrapper">
+        <button
+          id="left-side-bar-button-head"
+          class="left-side-bar-button"
+          type="button"
+        >
+          <p>HOME</p>
+        </button>
+        <button
+          id="left-side-bar-button-manage"
+          class="left-side-bar-button"
+          type="button"
+        >
+          <p>장비 관리</p>
+        </button>
+      </div>
+    </section>
+
+    <section id="content-area-container">
+      <div id="outer-box-wrapper">
+        <div id="outer_box">
+          <section id="panel-head">
+            <div id="boxtitle-and-time-wrapper">
+              <div id="box-title">
+                <p>장비 상세 보기</p>
+              </div>
+              <div id="server-time-wrapper">
+                <p>서버 시간 :</p>
+                <div id="server-time">
+                  <p>{{ server_time }}</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div id="divide-line"></div>
+
+          <section id="panel-info-container">
+            <div id="device-info-set-wrapper">
+              <div id="device-name-set-wrapper" class="device-info-wrapper">
+                <p>장비명 :</p>
+                <div id="device-name-data">
+                  <p>-</p>
+                </div>
+              </div>
+
+              <div id="device-ip-set-wrapper" class="device-info-wrapper">
+                <p>장비 IP :</p>
+                <div id="device-ip-data">
+                  <p>-</p>
+                </div>
+              </div>
+
+              <div id="device-desc-set-wrapper" class="device-info-wrapper">
+                <p>설 명 :</p>
+                <div id="device-desc-data">
+                  <p>-</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="panel-button">
+            <div id="button-wrapper">
+              <button id="list-button" class="panel-button" type="button">
+                목 록
+              </button>
+              <button id="update-button" class="panel-button" type="button">
+                수 정
+              </button>
+              <button id="delete-button" class="panel-button" type="button">
+                삭 제
+              </button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      $(document).ready(function () {
+        (function () {
+          $.ajax({
+            type: "GET",
+            url: `/snmp_device/api/get/${"{{ device_id }}"}`,
+            contentType: "JSON",
+            error: function (xhr, potion, error) {
+              console.log("실패");
+              console.log(error);
+            },
+            success: function (data) {
+              console.log("성공");
+              console.log(data);
+
+              $("#device-ip-data").html(`<p>${data.snmp_device.ip}</p>`);
+              $("#device-name-data").html(`<p>${data.snmp_device.name}</p>`);
+              $("#device-desc-data").html(`<p>${data.snmp_device.descr}</p>`);
+            },
+          });
+        })();
+      });
+
+      $("#list-button").click(function () {
+        $(location).attr("href", "/snmp_device/list_view");
+      });
+
+      $("#update-button").click(function () {
+        $(location).attr(
+          "href",
+          `/snmp_device/update_view/${"{{ device_id }}"}`
+        );
+      });
+
+      $("#delete-button").click(function () {
+        $.ajax({
+          type: "DELETE",
+          url: `/snmp_device/api/remove/${"{{ device_id }}"}`,
+          contentType: "JSON",
+          error: function (xhr, potion, error) {
+            console.log("실패");
+            console.log(error);
+          },
+          success: function (data) {
+            console.log("성공");
+            console.log(data);
+            alert("삭제 성공!");
+            window.location.href = "/snmp_device/list_view";
+          },
+        });
+      });
+
+      $("#left-side-bar-button-head").click(function () {
+        $(location).attr("href", "/snmp_device//list_view");
+      });
+
+      $("#left-side-bar-button-manage").click(function () {
+        $(location).attr("href", "/snmp_device/list_view");
+      });
+    </script>
+  </body>
+</html>

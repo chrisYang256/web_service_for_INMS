@@ -1,0 +1,43 @@
+/* section::: panel-table */
+#table_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 0px 0px 0px;
+}
+
+table,
+td,
+th {
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 15px;
+  border: solid 2px gray;
+}
+
+table {
+  table-layout: fixed;
+  width: 650px;
+}
+
+th,
+tr,
+td {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0px 10px;
+  height: 25px;
+}
+
+#grafana-of-device,
+#device-detail-info {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+}
+
+/* section::: panel-button */
+#regist-button-wrapper {
+  margin: 15px 0px 0px 25px;
+}

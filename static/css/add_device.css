@@ -1,0 +1,44 @@
+/* section - panel-input */
+#device-info-set-wrapper {
+  margin: 30px 0px 0px 25px;
+}
+
+.device-info-wrapper {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+#device-name-input,
+#device-ip-input {
+  margin-right: 270px;
+  width: 300px;
+  height: 25px;
+}
+
+#device-desc-input {
+  margin-right: 120px;
+}
+
+#device-desc-set-wrapper {
+  margin-top: 10px;
+}
+
+#device-name-set-wrapper {
+  margin-top: 10px;
+}
+
+#bottom-buttons-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  right: 200px;
+}
+
+#list-button {
+  margin-left: 25px;
+}
+
+#create-button {
+  margin-right: 25px;
+}

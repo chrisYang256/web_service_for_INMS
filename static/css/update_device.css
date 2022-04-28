@@ -1,0 +1,36 @@
+/* section - panel-input */
+#device-info-set-wrapper {
+  margin: 30px 0px 0px 25px;
+}
+
+.device-info-wrapper {
+  margin: auto;
+}
+
+.device-info-wrapper > p {
+  margin: auto;
+  float: left;
+  background-color: #fff;
+  border-radius: 10px;
+  width: 80px;
+}
+
+#device-ip-set-wrapper,
+#device-desc-set-wrapper {
+  margin-top: 10px;
+}
+
+#bottom-buttons-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  right: 200px;
+}
+
+#list-button {
+  margin-left: 25px;
+}
+
+#update-button {
+  margin-right: 25px;
+}
