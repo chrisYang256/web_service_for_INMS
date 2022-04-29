@@ -65,39 +65,49 @@
             <div id="device-info-set-wrapper">
               <form id="form-data" method="put">
                 <div id="device-name-set-wrapper" class="device-info-wrapper">
-                  <p>장비명 :</p>
+                  <p>장비명</p>
                   <div>
                     <input
                       id="device-name-input"
                       name="name"
                       type="text"
-                      size="48"
                       maxlength="50"
                     />
                   </div>
                 </div>
 
                 <div id="device-ip-set-wrapper" class="device-info-wrapper">
-                  <p>장비 IP :</p>
+                  <p>장비 IP</p>
                   <div>
                     <input
                       id="device-ip-input"
                       name="ip"
                       type="text"
-                      size="48"
+                      maxlength="50"
+                    />
+                  </div>
+                </div>
+
+                <div id="device-port-set-wrapper" class="device-info-wrapper">
+                  <p>장비 PORT</p>
+                  <div>
+                    <input
+                      id="device-port-input"
+                      name="port"
+                      type="text"
                       maxlength="50"
                     />
                   </div>
                 </div>
 
                 <div id="device-desc-set-wrapper" class="device-info-wrapper">
-                  <p>설명 :</p>
+                  <p>설명</p>
                   <div>
                     <textarea
                       id="device-desc-input"
                       name="descr"
                       type="text"
-                      rows="5"
+                      rows="3"
                       cols="62"
                       maxlength="4000"
                     ></textarea>
@@ -108,7 +118,7 @@
           </section>
 
           <section id="panel-button-container">
-            <div id="bottom-buttons-wrapper">
+            <div id="panel-button-wrapper">
               <button id="list-button" class="panel-button" type="button">
                 목 록
               </button>
@@ -137,6 +147,7 @@
               console.log(data);
               $(document).ready(function () {
                 $("#device-ip-input").val(data.snmp_device.ip);
+                $("#device-port-input").val(data.snmp_device.port);
                 $("#device-name-input").val(data.snmp_device.name);
                 $("#device-desc-input").val(data.snmp_device.descr);
               });
@@ -147,11 +158,17 @@
 
       $("#update-button").click(function () {
         const ip = $("#device-ip-input").val().trim();
+        const port = $("#device-port-input").val().trim();
         const name = $("#device-name-input").val().trim();
         const description = $("#device-desc-input").val().trim();
 
         if (ip === "") {
           alert("장비 ip를 입력해주세요.");
+          return;
+        }
+
+        if (port === "") {
+          alert("장비 port를 입력해주세요.");
           return;
         }
 

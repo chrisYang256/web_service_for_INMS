@@ -12,7 +12,7 @@ def select_snmp_device_list():
     db.connect()
 
     offset = request.args.get("offset", default=1, type=int)
-    limit = (
+    limit  = (
         request.args.get("limit", type=int)
         if request.args.get("limit")
         else sys.maxsize
@@ -41,10 +41,11 @@ def create_snmp_device():
     db.connect()
 
     ip    = request.form["ip"]
+    port  = request.form["port"]
     name  = request.form["name"]
     descr = request.form["descr"]
 
-    snmp_device_query.create_snmp_device(ip, name, descr)
+    snmp_device_query.create_snmp_device(ip, port, name, descr)
 
     db.commit()
     db.close()
@@ -56,10 +57,11 @@ def update_snmp_device(device_id: int):
     db.connect()
 
     ip    = request.form["ip"]
+    port  = request.form["port"]
     name  = request.form["name"]
     descr = request.form["descr"]
 
-    snmp_device_query.update_snmp_device(ip, name, descr, device_id)
+    snmp_device_query.update_snmp_device(ip, port, name, descr, device_id)
 
     db.commit()
     db.close()

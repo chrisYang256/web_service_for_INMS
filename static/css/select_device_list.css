@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 15px 0px 0px 0px;
+  margin: 25px 0px 0px 0px;
 }
 
 table,
@@ -12,12 +12,13 @@ th {
   border-collapse: collapse;
   text-align: center;
   font-size: 15px;
-  border: solid 2px gray;
+  border: solid 1.5px gray;
+  background-color: #fff;
 }
 
 table {
   table-layout: fixed;
-  width: 650px;
+  width: 95%;
 }
 
 th,
@@ -27,7 +28,11 @@ td {
   overflow: hidden;
   white-space: nowrap;
   padding: 0px 10px;
-  height: 25px;
+  height: 40px;
+}
+
+th {
+  border-bottom: 3px double gray;
 }
 
 #grafana-of-device,
@@ -37,7 +42,7 @@ td {
   text-decoration: underline;
 }
 
-/* section::: panel-button */
-#regist-button-wrapper {
-  margin: 15px 0px 0px 25px;
+/* panel-button-container */
+#panel-button-wrapper {
+  margin: 40px 0px 0px 25px;
 }

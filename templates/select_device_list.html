@@ -67,6 +67,7 @@
                 <tr>
                   <th>ID</th>
                   <th>IP</th>
+                  <th>PORT</th>
                   <th>장비명</th>
                   <th>장비소개</th>
                   <th>CPU</th>
@@ -79,7 +80,7 @@
           </section>
 
           <section id="panel-button-container">
-            <div id="regist-button-wrapper">
+            <div id="panel-button-wrapper">
               <button id="regist-button" class="panel-button" type="button">
                 신규 등록
               </button>
@@ -87,10 +88,6 @@
           </section>
         </div>
       </div>
-    </section>
-
-    <section id="right-side-dummy-container">
-      <div id="right-side-dummy"></div>
     </section>
 
     <script>
@@ -108,7 +105,7 @@
             success: function (data) {
               console.log("성공");
               console.log(data);
-              temp = "";
+              let temp = "";
               for (let v of data["snmp_device_list"]) {
                 temp += `<tr><td>${v["id"]}</td>`;
                 temp += `<td
@@ -116,6 +113,7 @@
                   onClick="location.href='grafana_view/${v["ip"]}'"
                   >${v["ip"]}
                 </td>`;
+                temp += `<td>${v["port"]}</td>`;
                 temp += `<td 
                   id="device-detail-info" 
                   onClick="location.href='detail_view/${v["id"]}'"
@@ -129,11 +127,11 @@
               }
 
               if (data["snmp_device_list"].length < 5) {
-                td = "<td></td>".repeat(8);
-                tr = `<tr>${td}</tr>`;
+                let count_tr = $("tr").children().length;
+                let td = "<td></td>".repeat(count_tr);
+                let tr = `<tr>${td}</tr>`;
 
-                add_line_conunt = 5 - data["snmp_device_list"].length;
-                console.log(add_line_conunt, tr);
+                let add_line_conunt = 5 - data["snmp_device_list"].length;
 
                 for (let i = 0; i < add_line_conunt; i++) {
                   temp += tr;

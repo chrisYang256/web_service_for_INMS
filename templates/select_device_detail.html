@@ -64,30 +64,37 @@
           <section id="panel-info-container">
             <div id="device-info-set-wrapper">
               <div id="device-name-set-wrapper" class="device-info-wrapper">
-                <p>장비명 :</p>
+                <p>장비명</p>
                 <div id="device-name-data">
-                  <p>-</p>
+                  <p>💃</p>
                 </div>
               </div>
 
               <div id="device-ip-set-wrapper" class="device-info-wrapper">
-                <p>장비 IP :</p>
+                <p>장비 IP</p>
                 <div id="device-ip-data">
-                  <p>-</p>
+                  <p>💃</p>
+                </div>
+              </div>
+
+              <div id="device-port-set-wrapper" class="device-info-wrapper">
+                <p>장비 PORT</p>
+                <div id="device-port-data">
+                  <p>💃</p>
                 </div>
               </div>
 
               <div id="device-desc-set-wrapper" class="device-info-wrapper">
-                <p>설 명 :</p>
+                <p>설 명</p>
                 <div id="device-desc-data">
-                  <p>-</p>
+                  <p>💃</p>
                 </div>
               </div>
             </div>
           </section>
 
-          <section id="panel-button">
-            <div id="button-wrapper">
+          <section id="panel-button-container">
+            <div id="panel-button-wrapper">
               <button id="list-button" class="panel-button" type="button">
                 목 록
               </button>
@@ -119,6 +126,7 @@
               console.log(data);
 
               $("#device-ip-data").html(`<p>${data.snmp_device.ip}</p>`);
+              $("#device-port-data").html(`<p>${data.snmp_device.port}</p>`);
               $("#device-name-data").html(`<p>${data.snmp_device.name}</p>`);
               $("#device-desc-data").html(`<p>${data.snmp_device.descr}</p>`);
             },

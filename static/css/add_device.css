@@ -3,35 +3,39 @@
   margin: 30px 0px 0px 25px;
 }
 
-.device-info-wrapper {
-  display: flex;
-  justify-content: space-between;
-  position: relative;
+#device-info-wrapper {
+  margin: auto;
 }
 
-#device-name-input,
-#device-ip-input {
-  margin-right: 270px;
-  width: 300px;
-  height: 25px;
+.device-info-wrapper > p {
+  margin: auto;
+  float: left;
+  background-color: #fff;
+  border-radius: 10px;
+  border-end-end-radius: 0px;
+  border-right: 3px solid greenyellow;
+  width: 100px;
 }
 
-#device-desc-input {
-  margin-right: 120px;
-}
-
+#device-ip-set-wrapper,
+#device-port-set-wrapper,
 #device-desc-set-wrapper {
-  margin-top: 10px;
+  margin-top: 25px;
 }
 
-#device-name-set-wrapper {
-  margin-top: 10px;
+#device-ip-input,
+#device-port-input,
+#device-name-input,
+#device-desc-input {
+  margin-left: 10px;
+  width: 500px;
 }
 
-#bottom-buttons-wrapper {
+/* panel-button-container */
+#panel-button-wrapper {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 50px;
   right: 200px;
 }
 

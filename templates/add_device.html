@@ -41,7 +41,7 @@
       </div>
     </section>
 
-    <section id="panel-wrapper">
+    <section id="content-area-container">
       <div id="outer-box-wrapper">
         <div id="outer_box">
           <section id="panel-head">
@@ -64,40 +64,49 @@
             <div id="device-info-set-wrapper">
               <form id="form-data" method="post">
                 <div id="device-name-set-wrapper" class="device-info-wrapper">
-                  <p>장비명 :</p>
+                  <p>장비명</p>
                   <div>
                     <input
                       id="device-name-input"
                       name="name"
                       type="text"
-                      size="48"
                       maxlength="50"
                     />
                   </div>
                 </div>
 
                 <div id="device-ip-set-wrapper" class="device-info-wrapper">
-                  <p>장비 IP :</p>
+                  <p>장비 IP</p>
                   <div>
                     <input
                       id="device-ip-input"
                       name="ip"
                       type="text"
-                      size="48"
+                      maxlength="50"
+                    />
+                  </div>
+                </div>
+
+                <div id="device-port-set-wrapper" class="device-info-wrapper">
+                  <p>장비 PORT</p>
+                  <div>
+                    <input
+                      id="device-port-input"
+                      name="port"
+                      type="text"
                       maxlength="50"
                     />
                   </div>
                 </div>
 
                 <div id="device-desc-set-wrapper" class="device-info-wrapper">
-                  <p>설명 :</p>
+                  <p>설명</p>
                   <div>
                     <textarea
                       id="device-desc-input"
                       name="descr"
                       type="text"
                       rows="5"
-                      cols="62"
                       type="text"
                       maxlength="4000"
                     ></textarea>
@@ -107,10 +116,14 @@
             </div>
           </section>
 
-          <section id="panel-button">
-            <div id="bottom-buttons-wrapper">
-              <button id="list-button" type="button">목 록</button>
-              <button id="create-button" type="button">생 성</button>
+          <section id="panel-button-container">
+            <div id="panel-button-wrapper">
+              <button id="list-button" class="panel-button" type="button">
+                목 록
+              </button>
+              <button id="create-button" class="panel-button" type="button">
+                생 성
+              </button>
             </div>
           </section>
         </div>
@@ -120,16 +133,22 @@
     <script>
       $("#create-button").click(function () {
         const ip = $("#device-ip-input").val().trim();
+        const port = $("#device-port-input").val().trim();
         const name = $("#device-name-input").val().trim();
         const description = $("#device-desc-input").val().trim();
 
-        if (name === "") {
-          alert("장비명을 입력해주세요.");
+        if (ip === "") {
+          alert("장비 ip를 입력해주세요.");
           return;
         }
 
-        if (ip === "") {
-          alert("장비 ip를 입력해주세요.");
+        if (port === "") {
+          alert("장비 port를 입력해주세요.");
+          return;
+        }
+
+        if (name === "") {
+          alert("장비명을 입력해주세요.");
           return;
         }
 

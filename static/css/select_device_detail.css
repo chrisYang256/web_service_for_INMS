@@ -12,14 +12,20 @@
   float: left;
   background-color: #fff;
   border-radius: 10px;
-  width: 80px;
+  border-end-end-radius: 0px;
+  border-right: 3px solid greenyellow;
+  width: 100px;
+  height: 40px;
 }
 
-#device-name-data,
 #device-ip-data,
+#device-port-data,
+#device-name-data,
 #device-desc-data {
   background-color: lightgoldenrodyellow;
-  width: 95%;
+  margin-left: 110px;
+  width: 80%;
+  height: 30px;
 }
 
 #device-name-set-wrapper {
@@ -27,13 +33,14 @@
 }
 
 #device-ip-set-wrapper,
+#device-port-set-wrapper,
 #device-desc-set-wrapper {
-  margin-top: 30px;
+  margin-top: 35px;
 }
 
-/* pannel-buttons */
-#button-wrapper {
-  margin-top: 40px;
+/* panel-button-container */
+#panel-button-wrapper {
+  margin-top: 60px;
   display: flex;
   justify-content: space-between;
 }
@@ -43,7 +50,7 @@
 }
 
 #update-button {
-  margin-left: 180px;
+  margin-left: 43%;
 }
 
 #delete-button {

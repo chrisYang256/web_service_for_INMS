@@ -12,7 +12,7 @@ def select_grafana(device_ip):
         <object 
             type="text/html" 
             class="dashboard" 
-            data="http://dev1.whyit.co.kr:8082/grafana/d/CXqJyow7z/ghyang-snmp-test-20220424?orgId=1&amp;kiosk=arcus&amp;theme=light&amp;from=now-1d&amp;to=now&amp;base_path=/grafana&amp;refresh=30s&amp;&amp;var-base_interval=auto&amp;ar-device_ip={device_ip}">
+            data="http://dev1.whyit.co.kr:3000/d/AQWi8rQnk/ghyang-inms?orgId=1&amp;kiosk=arcus&amp;theme=light&amp;from=now-1d&amp;to=now&amp;var-device_ip={device_ip}&amp;var-base_interval=auto&amp;base_path=/grafana">
         </object>
     """
     return render_template("select_grafana.html", grafana_dashboard=grafana_dashboard)
