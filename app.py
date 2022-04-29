@@ -21,5 +21,5 @@ if __name__=="__main__":
     app.run(
         host  = os.getenv("WEB_HOST"),
         port  = os.getenv("WEB_PORT"),
-        debug = os.getenv("DEBUG")
+        debug = os.getenv("DEBUG"),
     )
