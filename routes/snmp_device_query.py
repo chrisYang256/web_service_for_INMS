@@ -1,9 +1,7 @@
 import pymysql, datetime
 
-from db_connect import db
+from db_connect import cursor
 
-
-cursor = db.cursor(pymysql.cursors.DictCursor)
 
 def select_snmp_device_list(limit, skip):
     snmp_device_list = """

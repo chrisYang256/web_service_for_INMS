@@ -18,3 +18,4 @@ db = pymysql.connect(
     port    = int(os.getenv("DB_PORT")),
     charset = "utf8"
 )
+cursor = db.cursor(pymysql.cursors.DictCursor)
