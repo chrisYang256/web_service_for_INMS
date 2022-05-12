@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',
+    filename='css/common.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/select_device_list.css') }}"
+    />
+    <title>Device list</title>
+  </head>
+  <body>
+    <section id="left-side-bar-container">
+      <div id="left-side-bar-wrapper">
+        <button
+          id="left-side-bar-button-snmp"
+          class="left-side-bar-button"
+          type="button"
+        >
+          <p>SNMP 관리</p>
+        </button>
+        <button
+          id="left-side-bar-button-meraki"
+          class="left-side-bar-button"
+          type="button"
+        >
+          <p>Meraki 관리</p>
+        </button>
+      </div>
+    </section>
+
+    <section id="content-area-container">
+      <div id="outer-box-wrapper">
+        <div id="outer_box">
+          <section id="panel-head-container">
+            <div id="boxtitle-and-time-wrapper">
+              <div id="box-title">
+                <p>장비 목록</p>
+              </div>
+              <div id="server-time-wrapper">
+                <p>서버 시간 :</p>
+                <div id="server-time">
+                  <p>{{ server_time }}</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div id="divide-line"></div>
+
+          <section id="panel-table-container">
+            <div id="table_wrapper">
+              <table>
+                <tr>
+                  <th>Serial</th>
+                  <th>장비명</th>
+                  <th>장비 위치</th>
+                  <th>LanIp</th>
+                  <th>NetworkId</th>
+                  <th>Firmware</th>
+                  <th>Mac</th>
+                  <th>생성일</th>
+                  <th>수정일</th>
+                </tr>
+              </table>
+            </div>
+          </section>
+
+          <!-- <section id="panel-button-container">
+            <div id="panel-button-wrapper">
+              <button id="regist-button" class="panel-button" type="button">
+                신규 등록
+              </button>
+            </div>
+          </section> -->
+        </div>
+      </div>
+    </section>
+
+    <section id="mock-tag-container">
+      <div id="mock-tag"></div>
+    </section>
+
+    <script>
+      $("document").ready(function () {
+        (function () {
+          $.ajax({
+            type: "GET",
+            url: "api/list",
+            data: {limit: 5},
+            contentType: "JSON",
+            error: function (xhr, potion, error) {
+              console.log("실패");
+              console.log(error);
+            },
+            success: function (data) {
+              console.log("성공");
+              console.log(data);
+              let temp = "";
+              for (let v of data["meraki_device_list"]) {
+                temp += `<tr><td 
+                  id="device-detail-info" 
+                  onClick="location.href='grafana_view/${v["serial"]}'"
+                  >${v["serial"]}
+                </td>`;
+                temp += `<td
+                  id="grafana-of-device" 
+                  onClick="location.href='detail_view/${v["serial"]}'"
+                  >${v["name"]}
+                </td>`;
+                temp += `<td>${v["address"]}</td>`;
+                temp += `<td>${v["lanIp"]}</td>`;
+                temp += `<td>${v["networkId"]}</td>`;
+                temp += `<td>${v["firmware"]}</td>`;
+                temp += `<td>${v["mac"]}</td>`;
+                temp += `<td>${v["cdate"]}</td>`;
+                temp += `<td>${v["udate"]}</td></tr>`;
+              }
+
+              if (data["meraki_device_list"].length < 5) {
+                let count_tr = $("tr").children().length;
+                let td = "<td></td>".repeat(count_tr);
+                let tr = `<tr>${td}</tr>`;
+
+                let add_line_conunt = 5 - data["meraki_device_list"].length;
+
+                for (let i = 0; i < add_line_conunt; i++) {
+                  temp += tr;
+                }
+              }
+
+              $("tbody").append(temp);
+            },
+          });
+        })();
+      });
+
+      // $("#regist-button").click(function () {
+      //   $(location).attr("href", "/meraki_device//add_view");
+      // });
+
+      $("#left-side-bar-button-snmp").click(function () {
+        $(location).attr("href", "/snmp_device/list_view");
+      });
+
+      $("#left-side-bar-button-meraki").click(function () {
+        $(location).attr("href", "/meraki_device/list_view");
+      });
+    </script>
+  </body>
+</html>

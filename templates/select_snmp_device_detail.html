@@ -26,18 +26,18 @@
     <section id="left-side-bar-container">
       <div id="left-side-bar-wrapper">
         <button
-          id="left-side-bar-button-head"
+          id="left-side-bar-button-snmp"
           class="left-side-bar-button"
           type="button"
         >
-          <p>HOME</p>
+          <p>SNMP 관리</p>
         </button>
         <button
-          id="left-side-bar-button-manage"
+          id="left-side-bar-button-meraki"
           class="left-side-bar-button"
           type="button"
         >
-          <p>장비 관리</p>
+          <p>Meraki 관리</p>
         </button>
       </div>
     </section>
@@ -63,30 +63,30 @@
 
           <section id="panel-info-container">
             <div id="device-info-set-wrapper">
-              <div id="device-name-set-wrapper" class="device-info-wrapper">
+              <div id="device-value1-set-wrapper" class="device-info-wrapper">
                 <p>장비명</p>
-                <div id="device-name-data">
+                <div id="device-value1-data">
                   <p>💃</p>
                 </div>
               </div>
 
-              <div id="device-ip-set-wrapper" class="device-info-wrapper">
+              <div id="device-value2-set-wrapper" class="device-info-wrapper">
                 <p>장비 IP</p>
-                <div id="device-ip-data">
+                <div id="device-value2-data">
                   <p>💃</p>
                 </div>
               </div>
 
-              <div id="device-port-set-wrapper" class="device-info-wrapper">
+              <div id="device-value3-set-wrapper" class="device-info-wrapper">
                 <p>장비 PORT</p>
-                <div id="device-port-data">
+                <div id="device-value3-data">
                   <p>💃</p>
                 </div>
               </div>
 
-              <div id="device-desc-set-wrapper" class="device-info-wrapper">
+              <div id="device-value4-set-wrapper" class="device-info-wrapper">
                 <p>설 명</p>
-                <div id="device-desc-data">
+                <div id="device-value4-data">
                   <p>💃</p>
                 </div>
               </div>
@@ -110,6 +110,10 @@
       </div>
     </section>
 
+    <section id="mock-tag-container">
+      <div id="mock-tag"></div>
+    </section>
+
     <script>
       $(document).ready(function () {
         (function () {
@@ -125,10 +129,10 @@
               console.log("성공");
               console.log(data);
 
-              $("#device-ip-data").html(`<p>${data.snmp_device.ip}</p>`);
-              $("#device-port-data").html(`<p>${data.snmp_device.port}</p>`);
-              $("#device-name-data").html(`<p>${data.snmp_device.name}</p>`);
-              $("#device-desc-data").html(`<p>${data.snmp_device.descr}</p>`);
+              $("#device-value1-data").html(`<p>${data.snmp_device.ip}</p>`);
+              $("#device-value2-data").html(`<p>${data.snmp_device.port}</p>`);
+              $("#device-value3-data").html(`<p>${data.snmp_device.name}</p>`);
+              $("#device-value4-data").html(`<p>${data.snmp_device.descr}</p>`);
             },
           });
         })();
@@ -163,12 +167,12 @@
         });
       });
 
-      $("#left-side-bar-button-head").click(function () {
-        $(location).attr("href", "/snmp_device//list_view");
+      $("#left-side-bar-button-snmp").click(function () {
+        $(location).attr("href", "/snmp_device/list_view");
       });
 
-      $("#left-side-bar-button-manage").click(function () {
-        $(location).attr("href", "/snmp_device/list_view");
+      $("#left-side-bar-button-meraki").click(function () {
+        $(location).attr("href", "/meraki_device/list_view");
       });
     </script>
   </body>

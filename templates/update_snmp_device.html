@@ -26,18 +26,18 @@
     <section id="left-side-bar-container">
       <div id="left-side-bar-wrapper">
         <button
-          id="left-side-bar-button-head"
+          id="left-side-bar-button-snmp"
           class="left-side-bar-button"
           type="button"
         >
-          <p>HOME</p>
+          <p>SNMP 관리</p>
         </button>
         <button
-          id="left-side-bar-button-manage"
+          id="left-side-bar-button-meraki"
           class="left-side-bar-button"
           type="button"
         >
-          <p>장비 관리</p>
+          <p>Meraki 관리</p>
         </button>
       </div>
     </section>
@@ -131,6 +131,10 @@
       </div>
     </section>
 
+    <section id="mock-tag-container">
+      <div id="mock-tag"></div>
+    </section>
+
     <script>
       $(document).ready(function () {
         (function () {
@@ -206,12 +210,12 @@
         $(location).attr("href", "/snmp_device/list_view");
       });
 
-      $("#left-side-bar-button-head").click(function () {
-        $(location).attr("href", "/snmp_device//list_view");
+      $("#left-side-bar-button-snmp").click(function () {
+        $(location).attr("href", "/snmp_device/list_view");
       });
 
-      $("#left-side-bar-button-manage").click(function () {
-        $(location).attr("href", "/snmp_device//list_view");
+      $("#left-side-bar-button-meraki").click(function () {
+        $(location).attr("href", "/meraki_device/list_view");
       });
     </script>
   </body>

@@ -10,6 +10,8 @@ app = Flask(__name__)
 
 app.register_blueprint(snmp_device_api)
 app.register_blueprint(snmp_device_view)
+app.register_blueprint(meraki_device_api)
+app.register_blueprint(meraki_device_view)
 
 load_dotenv(
     dotenv_path = ".env",

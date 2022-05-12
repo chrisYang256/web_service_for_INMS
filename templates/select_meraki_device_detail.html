@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static',
+    filename='css/common.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='/css/select_device_detail.css') }}"
+    />
+    <title>Device Detail</title>
+  </head>
+  <body>
+    <section id="left-side-bar-container">
+      <div id="left-side-bar-wrapper">
+        <button
+          id="left-side-bar-button-snmp"
+          class="left-side-bar-button"
+          type="button"
+        >
+          <p>SNMP 관리</p>
+        </button>
+        <button
+          id="left-side-bar-button-meraki"
+          class="left-side-bar-button"
+          type="button"
+        >
+          <p>Meraki 관리</p>
+        </button>
+      </div>
+    </section>
+
+    <section id="content-area-container">
+      <div id="outer-box-wrapper">
+        <div id="outer_box">
+          <section id="panel-head">
+            <div id="boxtitle-and-time-wrapper">
+              <div id="box-title">
+                <p>장비 상세 보기</p>
+              </div>
+              <div id="server-time-wrapper">
+                <p>서버 시간 :</p>
+                <div id="server-time">
+                  <p>{{ server_time }}</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div id="divide-line"></div>
+
+          <section id="panel-info-container">
+            <div id="device-info-set-wrapper">
+              <div id="device-value1-set-wrapper" class="device-info-wrapper">
+                <p>장비명</p>
+                <div id="device-value1-data">
+                  <p>💃</p>
+                </div>
+              </div>
+
+              <div id="device-value2-set-wrapper" class="device-info-wrapper">
+                <p>장비 Serial</p>
+                <div id="device-value2-data">
+                  <p>💃</p>
+                </div>
+              </div>
+
+              <div id="device-value3-set-wrapper" class="device-info-wrapper">
+                <p>장비 LanIp</p>
+                <div id="device-value3-data">
+                  <p>💃</p>
+                </div>
+              </div>
+
+              <div id="device-value4-set-wrapper" class="device-info-wrapper">
+                <p>장비 위치</p>
+                <div id="device-value4-data">
+                  <p>💃</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="panel-button-container">
+            <div id="panel-button-wrapper">
+              <button id="list-button" class="panel-button" type="button">
+                목 록
+              </button>
+              <!-- <button id="update-button" class="panel-button" type="button">
+                수 정
+              </button>
+              <button id="delete-button" class="panel-button" type="button">
+                삭 제
+              </button> -->
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section id="mock-tag-container">
+      <div id="mock-tag"></div>
+    </section>
+
+    <script>
+      $(document).ready(function () {
+        (function () {
+          $.ajax({
+            type: "GET",
+            url: `/meraki_device/api/get/${"{{ device_serial }}"}`,
+            contentType: "JSON",
+            error: function (xhr, potion, error) {
+              console.log("실패");
+              console.log(error);
+            },
+            success: function (data) {
+              console.log("성공");
+              console.log(data);
+
+              $("#device-value1-data").html(
+                `<p>${data.meraki_device.name}</p>`
+              );
+              $("#device-value2-data").html(
+                `<p>${data.meraki_device.serial}</p>`
+              );
+              $("#device-value3-data").html(
+                `<p>${data.meraki_device.lanIp}</p>`
+              );
+              $("#device-value4-data").html(
+                `<p>${data.meraki_device.address}</p>`
+              );
+            },
+          });
+        })();
+      });
+
+      $("#list-button").click(function () {
+        $(location).attr("href", "/meraki_device/list_view");
+      });
+
+      // $("#update-button").click(function () {
+      //   $(location).attr(
+      //     "href",
+      //     `/meraki_device/update_view/${"{{ device_serial }}"}`
+      //   );
+      // });
+
+      // $("#delete-button").click(function () {
+      //   $.ajax({
+      //     type: "DELETE",
+      //     url: `/meraki_device/api/remove/${"{{ device_id }}"}`,
+      //     contentType: "JSON",
+      //     error: function (xhr, potion, error) {
+      //       console.log("실패");
+      //       console.log(error);
+      //     },
+      //     success: function (data) {
+      //       console.log("성공");
+      //       console.log(data);
+      //       alert("삭제 성공!");
+      //       window.location.href = "/snmp_device/list_view";
+      //     },
+      //   });
+      // });
+
+      $("#left-side-bar-button-snmp").click(function () {
+        $(location).attr("href", "/snmp_device/list_view");
+      });
+
+      $("#left-side-bar-button-meraki").click(function () {
+        $(location).attr("href", "/meraki_device/list_view");
+      });
+    </script>
+  </body>
+</html>

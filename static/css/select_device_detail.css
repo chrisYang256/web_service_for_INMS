@@ -18,23 +18,23 @@
   height: 40px;
 }
 
-#device-ip-data,
-#device-port-data,
-#device-name-data,
-#device-desc-data {
+#device-value1-data,
+#device-value2-data,
+#device-value3-data,
+#device-value4-data {
   background-color: lightgoldenrodyellow;
   margin-left: 110px;
   width: 80%;
   height: 30px;
 }
 
-#device-name-set-wrapper {
+#device-value1-set-wrapper {
   margin-top: 20px;
 }
 
-#device-ip-set-wrapper,
-#device-port-set-wrapper,
-#device-desc-set-wrapper {
+#device-value2-set-wrapper,
+#device-value3-set-wrapper,
+#device-value4-set-wrapper {
   margin-top: 35px;
 }
 
