@@ -26,6 +26,13 @@
     <section id="left-side-bar-container">
       <div id="left-side-bar-wrapper">
         <button
+          id="left-side-bar-button-main"
+          class="left-side-bar-button"
+          type="button"
+        >
+          <p>Main</p>
+        </button>
+        <button
           id="left-side-bar-button-snmp"
           class="left-side-bar-button"
           type="button"
@@ -51,6 +58,10 @@
     </section>
 
     <script>
+      $("#left-side-bar-button-main").click(function () {
+        $(location).attr("href", "/visualization/main_view");
+      });
+
       $("#left-side-bar-button-snmp").click(function () {
         $(location).attr("href", "/snmp_device/list_view");
       });

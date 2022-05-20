@@ -26,6 +26,13 @@
     <section id="left-side-bar-container">
       <div id="left-side-bar-wrapper">
         <button
+          id="left-side-bar-button-main"
+          class="left-side-bar-button"
+          type="button"
+        >
+          <p>Main</p>
+        </button>
+        <button
           id="left-side-bar-button-snmp"
           class="left-side-bar-button"
           type="button"
@@ -79,14 +86,6 @@
               </table>
             </div>
           </section>
-
-          <!-- <section id="panel-button-container">
-            <div id="panel-button-wrapper">
-              <button id="regist-button" class="panel-button" type="button">
-                신규 등록
-              </button>
-            </div>
-          </section> -->
         </div>
       </div>
     </section>
@@ -114,7 +113,7 @@
               for (let v of data["meraki_device_list"]) {
                 temp += `<tr><td 
                   id="device-detail-info" 
-                  onClick="location.href='grafana_view/${v["serial"]}'"
+                  onClick="location.href='/visualization/meraki_view/${v["serial"]}'"
                   >${v["serial"]}
                 </td>`;
                 temp += `<td
@@ -150,9 +149,9 @@
         })();
       });
 
-      // $("#regist-button").click(function () {
-      //   $(location).attr("href", "/meraki_device//add_view");
-      // });
+      $("#left-side-bar-button-main").click(function () {
+        $(location).attr("href", "/visualization/main_view");
+      });
 
       $("#left-side-bar-button-snmp").click(function () {
         $(location).attr("href", "/snmp_device/list_view");
