@@ -6,7 +6,7 @@
 
 - "Integrated Network Monitoring Service" 중 web service 파트의 기본 프레임 입니다.
 - 수집할 장비정보를 사용자로부터 입력, 삭제, 수정할 수 있도록 하여 poller 파트에서 참고하여 수집할 데이터를 정립합니다.
-- poller가 수집하여 기록한 정형/비정형 데이터에 대하여 grafana와 연동하여 시각화된 장비 정보를 비개발자 관점에서 사용할 수 있도록 표현합니다.
+- poller가 수집하여 기록한 정형/비정형 데이터에 대하여 grafana와 연동하여 시각화된 장비 정보를 표현합니다.
 
 </br>
 
@@ -73,5 +73,13 @@ pip install -r requirements.txt
 </br>
 
 ## > 시연
+
+- latley ver: Intergrated dashboard & SNMP / Meraki devices dashboard
+
+![my_06_03](https://user-images.githubusercontent.com/89192083/171776657-fb5f5370-0557-4ff7-b379-50695121758c.gif)
+
+</br>
+
+- Previous ver: SNMP only
 
 ![Grafana-of-device-Chrome-2022-04-28-22-40-34](https://user-images.githubusercontent.com/89192083/165766320-040d8700-98c8-4e9f-a4e5-6d585946da14.gif)
